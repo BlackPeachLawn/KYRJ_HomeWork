@@ -1,4 +1,3 @@
-
 #encoding=utf-8
 import requests
 import csv
@@ -93,13 +92,18 @@ def main():
        writer.writerow(list1)
        for i in movie_details:
            writer.writerow(i)
-       str=input("请输入你想了解的电影全名：")
-       print()
+   with open(r"movie_details3.csv")as datacs:
+       read1=csv.reader(datacs,delimiter=',')
+       for j in read1:
+           print(j[0])
    with open(r"movie_details3.csv")as datacsv:
        read=csv.reader(datacsv,delimiter=',')
        flag=0
+       print()
+       str=input("请输入你想了解的电影全名：")
+       print()
        for i in read:
-           if i[0]==str:
+           if str==i[0]:
                data=download_page(i[13])
                dict1=dict(zip(list1,i))
                for key in dict1.keys():
